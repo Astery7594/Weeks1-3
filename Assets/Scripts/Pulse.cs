@@ -1,12 +1,10 @@
 using UnityEngine;
 
-public class Linear : MonoBehaviour
+public class Pulse : MonoBehaviour
 {
-    public Transform start;
-    public Transform end;
+    public AnimationCurve curve;
     public float t = 0;
 
-    public AnimationCurve curve;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,12 +15,14 @@ public class Linear : MonoBehaviour
     void Update()
     {
         t += Time.deltaTime;
-        if (t > 1)
+        if(t>1)
         {
             t = 0;
         }
-        // transform.position=Vector2.Lerp(start.position, end.position, t);
-        transform.position = Vector2.Lerp(start.position, end.position, curve.Evaluate(t));
+        float y= curve.Evaluate(t);
+        Vector3 newSize = Vector3.one*y;
+        // is the same as a vector
+        transform.localScale= Vector3.one*curve.Evaluate(t);
 
     }
 }
