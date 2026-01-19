@@ -5,6 +5,7 @@ public class LinearMovement : MonoBehaviour
     public Transform start;
     public Transform end;
     public float t=0;
+    public float a;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,7 +18,8 @@ public class LinearMovement : MonoBehaviour
     {
         //t += Time.deltaTime;
 
-        t=t+(float)0.0001;
+        //t=t+(float)0.0001;
+        t = t + a;
         
         if (t > 1)
         {
